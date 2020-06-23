@@ -1,0 +1,49 @@
+
+<router-outlet></router-outlet>
+
+<h1></h1>
+<hr>
+<h2>Proyeto {{ titulo }}</h2>
+<h3>{{ "Creado por: " + nombre}}</h3>
+<h3>Edad: {{ edad }} años.</h3>
+<hr>
+<autor></autor>
+
+<hr>
+<libro></libro>
+
+<hr>
+<div class="container">
+  <h1>Formulario de Datos</h1>
+  <hr>
+  <form [formGroup]="frmdatos">
+      : <input type="text" formControlName="txtnombre" [(ngModel)]="usuario.nombre" class="form-control" [class.is-invalid]="frmdatos.get('txtnombre').touched && frmdatos.get('txtnombre').invalid"><br>
+      : <input type="number" formControlName="txtedad" [(ngModel)]="usuario.edad" class="form-control" [class.is-invalid]="frmdatos.get('txtedad').touched && frmdatos.get('txtedad').invalid"><br>
+      :
+      <select formControlName="cbodistrito" [(ngModel)]="usuario.distrito" class="form-control">
+          <option [value]="item" *ngFor="let item of lista">{{ item }}</option>
+      </select><br><br>
+      <input type="button" value="Mostrar Datos" (click)="mostrar($event)">
+      <input type="button" value="Activar Datos" (click)="activar($event)">
+  </form>
+  <br>
+</div>
+<div class="container">
+  <table align="center" class="table">
+    <tr>
+      <th>Nombre del Autor</th>
+      <th>Edad</th>
+      <th>Pais</th>
+    </tr>
+    <tr *ngFor = "let au of autor">
+      <td>{{au.nombre}}</td>
+      <td>{{au.edad}}</td>
+      <td>{{au.pais}}</td>
+    </tr>
+  </table>
+</div>
+
+<br>
+
+
+
